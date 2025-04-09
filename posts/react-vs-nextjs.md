@@ -1,6 +1,6 @@
 ---
 title: "React vs. Next.js"
-date: "09-04-2023"
+date: "04-09-2025"
 category: "Web Development"
 tags: "nextjs, react, tutorials"
 excerpt: "Let's end the confusion of what to use- React or Next JS"
@@ -9,7 +9,7 @@ authorBio: "A passionate web dev."
 ---
 
 # React vs. Next.js: What’s the Big Deal?
-![React vs Next](/public/Blog1-1.webp)
+![React vs Next](/Blog1-1.webp)
 
 React vs. Next.js: What’s the Big Deal?
 Hey!! I think you are getting some trouble in choosing between the two of the most popular Javascript Frameworks- Next JS and React. Both are extensively used in the industry, But what is better?? Lets skim through the pros and cons of both and then we will compare and find the perfect fit for us!!
@@ -23,7 +23,7 @@ Lets dive deep into this!!
 <br>
 
 ## What Makes React So Awesome?
-![React vs Next](/public/Blog1-2.webp)
+![React vs Next](/Blog1-2.webp)
 
 React is like the most powerful weapon for a developer. My favourite is reusable component support. Now I don’t have to code the whole navbar again and again in all the files!! React gave a lot of freedom to the developers and it is still one of the most used frameworks for JavaScript.
 
@@ -40,7 +40,7 @@ All these features makes React a very attractive option for developers, But now 
 <br>
 
 ## What Makes Next.js Shine?
-![React vs Next](/public/Blog1-3.webp)
+![React vs Next](/Blog1-3.webp)
 
 Ok so now lets view some features of Next JS which makes it compliment all the React features with a magic sprinkled on it. Next.js takes React to the next level. It adds features that make building modern web apps so much easier. Here’s what I love about it:
 
@@ -88,7 +88,7 @@ Next.js is perfect for apps that need to grow over time with its built-in routin
 <br>
 
 ## React vs. Next.js: My Two Cents
-![React vs Next](/public/Blog1-1.webp)
+![React vs Next](/Blog1-1.webp)
 
 If you are still confused on what to use – React or Next JS, my answer will be – it depends. React is actually like a blank canvas where you can paint anything you want, but you have to mix the colors and buy the brushes yourself. Next JS on the other hand, is like a paint toolkit which save your effort and time.
 
