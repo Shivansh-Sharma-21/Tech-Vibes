@@ -1,3 +1,13 @@
+---
+title: "React vs. Next.js"
+date: "09-04-2023"
+category: "Web Development"
+tags: "nextjs, react, tutorials"
+excerpt: "Let's end the confusion of what to use- React or Next JS"
+author: "Shivansh Sharma"
+authorBio: "A passionate web dev."
+---
+
 # React vs. Next.js: What’s the Big Deal?
 ![React vs Next](/public/Blog1-1.webp)
 
