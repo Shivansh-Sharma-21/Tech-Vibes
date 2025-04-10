@@ -7,6 +7,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'posts'));
@@ -35,7 +36,7 @@ function getPostMetadata() {
       excerpt: matterResult.data.excerpt || "",
     };
   });
-
+  
   return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
@@ -58,22 +59,6 @@ async function processMarkdown(content) {
   return result.toString();
 }
 
-// Extract table of contents from HTML content
-function extractTableOfContents(html) {
-  const headings = [];
-  const regex = /<h([2-3])[^>]*id="([^"]+)"[^>]*>(.*?)<\/h\1>/g;
-  let match;
-  
-  while ((match = regex.exec(html)) !== null) {
-    const level = parseInt(match[1]);
-    const id = match[2];
-    const text = match[3].replace(/<[^>]*>/g, '').trim(); // Remove HTML tags from heading text
-    headings.push({ level, id, text });
-  }
-  
-  return headings;
-}
-
 export default async function PostPage({ params }) {
   console.log("Rendering post for slug:", params.slug);
   const filePath = path.join(process.cwd(), 'posts', `${params.slug}.md`);
@@ -83,10 +68,6 @@ export default async function PostPage({ params }) {
   
   // Process markdown to HTML
   const htmlContent = await processMarkdown(markdownContent);
-  
-  // Extract table of contents
-  const tableOfContents = extractTableOfContents(htmlContent);
-  console.log("Table of contents items:", tableOfContents.length);
   
   // Calculate reading time
   const readingTime = estimateReadingTime(markdownContent);
@@ -104,7 +85,7 @@ export default async function PostPage({ params }) {
     month: 'long',
     day: 'numeric'
   }) : '';
-
+  
   return (
     <div className="animate-fadeIn">
       {/* Hero section with title and metadata */}
@@ -150,61 +131,13 @@ export default async function PostPage({ params }) {
         </div>
       </div>
       
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-        {/* On small screens, show the table of contents first, after the title */}
-        <aside className="col-span-12 lg:col-span-4 lg:order-2 mb-6 lg:mb-0">
-          <div className="lg:sticky lg:top-24">
-            <div className="rounded-xl border border-border bg-gradient-to-br from-background to-secondary/20 backdrop-blur-sm p-4 sm:p-6 shadow-sm w-full sm:max-w-md mx-auto lg:w-full">
-              <h3 className="text-base sm:text-lg font-semibold mb-4 border-b border-border pb-2 inline-flex items-center w-full">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
-                </svg>
-                Contents
-              </h3>
-              <nav>
-                <ul className="space-y-1 sm:space-y-2 list-disc list-inside">
-                  {tableOfContents.length > 0 ? (
-                    tableOfContents.map((heading, index) => {
-                      const linkClasses = `
-                        inline-block py-1 px-2 rounded
-                        ${heading.level === 2 
-                          ? 'text-sm text-foreground font-medium -ml-2'
-                          : 'text-xs text-muted-foreground ml-0 sm:ml-3 font-normal'
-                        }
-                        hover:bg-primary/5 hover:text-primary
-                        focus:outline-none focus:ring-2 focus:ring-primary/10
-                        transition-colors
-                      `;
-                      
-                      return (
-                        <li key={index} className={heading.level === 3 ? 'ml-4 sm:ml-6' : ''}>
-                          <a 
-                            href={`#${heading.id}`}
-                            className={linkClasses}
-                            data-toc-link
-                          >
-                            {heading.text}
-                          </a>
-                        </li>
-                      );
-                    })
-                  ) : (
-                    <li className="text-muted-foreground text-sm py-2">
-                      No headings found in this article
-                    </li>
-                  )}
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </aside>
-
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Article content - main */}
-        <main className="col-span-12 lg:col-span-8 lg:order-1">
+        <main className="col-span-12">
           <article className="prose prose-sm sm:prose prose-lg dark:prose-invert max-w-none">
             <div 
               className="leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: htmlContent }} 
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
           </article>
           
@@ -215,7 +148,7 @@ export default async function PostPage({ params }) {
               <div className="flex flex-wrap gap-2">
                 {data.tags.split(',').map((tag, index) => (
                   <span 
-                    key={index}
+                    key={index} 
                     className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-secondary/50 text-secondary-foreground"
                   >
                     {tag.trim()}
@@ -314,15 +247,15 @@ export default async function PostPage({ params }) {
           Back to all posts
         </Link>
       </div>
-
-      {/* Script to handle smooth scrolling for table of contents links */}
+      
+      {/* Script to handle smooth scrolling for anchor links */}
       <script dangerouslySetInnerHTML={{ __html: `
         document.addEventListener('DOMContentLoaded', function() {
-          // Get all links in the table of contents
-          const tocLinks = document.querySelectorAll('[data-toc-link]');
+          // Get all links with hash
+          const hashLinks = document.querySelectorAll('a[href^="#"]');
           
           // Add click event to each link
-          tocLinks.forEach(link => {
+          hashLinks.forEach(link => {
             link.addEventListener('click', function(e) {
               e.preventDefault();
               
