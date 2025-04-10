@@ -10,7 +10,7 @@ authorBio: "A passionate web dev."
 
 ### Next JS Image Optimization: The Ultimate Guide to Lightning-Fast Images
 
-![Next JS Image Optimization](/Blog2-1.jpeg)
+![Next JS Image Optimization](/Blog2-1.webp)
 
 Have you ever stuck at images in your Next JS site!! The whole site is so smooth but the only thing that troubles me is Images.In today’s world, where an average person’s attention span is less than an Instagram reel, slow loading images ruins the user experience.
 
@@ -25,7 +25,7 @@ Optimizing images on your website will boosts its loading speed, boost its SEO, 
 
 ## The ``<Image />`` Component — The Star of the Show
 
-![Next JS Image Optimization](/Blog2-2.jpeg)
+![Next JS Image Optimization](/Blog2-3.webp)
 
 Next JS gives you a super power to handle images on your site – ``<Image />``. This isn’t your average ``<img>``tag. It’s smart, powerful, and brings a bunch of under-the-hood magic.
 
@@ -125,8 +125,6 @@ module.exports = {
 Without this? You’ll get nothing but red console errors and a sad, broken UI. So yeah, don’t forget it.
 
 ## ⚡️Performance Tips You Can’t Ignore
-
-![Next JS Image Optimization](/Blog2-3.jpeg)
 
 Let’s sprinkle in some real-world advice that isn’t always in the docs:
 
