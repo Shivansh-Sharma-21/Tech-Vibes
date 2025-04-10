@@ -85,7 +85,7 @@ export default async function PostPage({ params }) {
     month: 'long',
     day: 'numeric'
   }) : '';
-  
+
   return (
     <div className="animate-fadeIn">
       {/* Hero section with title and metadata */}
@@ -131,9 +131,9 @@ export default async function PostPage({ params }) {
         </div>
       </div>
       
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
         {/* Article content - main */}
-        <main className="col-span-12">
+        <main className="col-span-12 lg:col-span-8">
           <article className="prose prose-sm sm:prose prose-lg dark:prose-invert max-w-none">
             <div 
               className="leading-relaxed"
@@ -167,7 +167,7 @@ export default async function PostPage({ params }) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                   </svg>
                 </div>
-                <div>
+    <div>
                   <h3 className="text-lg sm:text-xl font-semibold">{data.author}</h3>
                   {data.authorBio && <p className="text-sm sm:text-base text-muted-foreground">{data.authorBio}</p>}
                 </div>
@@ -179,7 +179,7 @@ export default async function PostPage({ params }) {
           <div className="mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-border">
             <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Related Posts</h3>
             {relatedPosts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {relatedPosts.map((post) => (
                   <Link 
                     key={post.slug}
@@ -227,6 +227,51 @@ export default async function PostPage({ params }) {
             )}
           </div>
         </main>
+        
+        {/* Right sidebar */}
+        <aside className="col-span-12 lg:col-span-4 lg:order-2">
+          <div className="lg:sticky lg:top-24 space-y-6">
+            {/* Post info card */}
+            <div className="rounded-xl border border-border bg-gradient-to-br from-background to-secondary/20 backdrop-blur-sm p-4 sm:p-6 shadow-sm">
+              <h3 className="text-base sm:text-lg font-semibold mb-4 border-b border-border pb-2 inline-flex items-center w-full">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Post Info
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-center text-sm">
+                  <svg className="w-4 h-4 mr-2 text-primary/70" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-muted-foreground">Published: <span className="text-foreground">{formattedDate}</span></span>
+                </div>
+                <div className="flex items-center text-sm">
+                  <svg className="w-4 h-4 mr-2 text-primary/70" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-muted-foreground">Reading time: <span className="text-foreground">{readingTime} min</span></span>
+                </div>
+                {data.category && (
+                  <div className="flex items-center text-sm">
+                    <svg className="w-4 h-4 mr-2 text-primary/70" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    </svg>
+                    <span className="text-muted-foreground">Category: <span className="text-foreground">{data.category}</span></span>
+                  </div>
+                )}
+                {data.author && (
+                  <div className="flex items-center text-sm">
+                    <svg className="w-4 h-4 mr-2 text-primary/70" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span className="text-muted-foreground">Author: <span className="text-foreground">{data.author}</span></span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
       
       {/* Back to blog button */}
