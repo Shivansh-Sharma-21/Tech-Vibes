@@ -31,8 +31,9 @@ export default function RootLayout({ children }) {
         gtag('js', new Date());
 
         gtag('config', 'G-CZ4CB0P6HR');
-        </Script>
         `}
+        </Script>
+        
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
