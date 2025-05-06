@@ -22,7 +22,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="google-site-verification" content="yMK-hRTtGzrHKfmUOCl6ux80PRnnmz8Uy-eBLIer-I4" />
-        <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ4CB0P6HR"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
