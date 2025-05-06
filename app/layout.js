@@ -20,7 +20,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head><meta name="google-site-verification" content="yMK-hRTtGzrHKfmUOCl6ux80PRnnmz8Uy-eBLIer-I4" /></head>
+      <head>
+        <meta name="google-site-verification" content="yMK-hRTtGzrHKfmUOCl6ux80PRnnmz8Uy-eBLIer-I4" />
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ4CB0P6HR"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CZ4CB0P6HR');
+        </script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
