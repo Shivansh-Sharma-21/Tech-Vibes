@@ -24,13 +24,15 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="google-site-verification" content="yMK-hRTtGzrHKfmUOCl6ux80PRnnmz8Uy-eBLIer-I4" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ4CB0P6HR"></Script>
-        <Script>
+        <Script id="google-analytics">
+        {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments)}
         gtag('js', new Date());
 
         gtag('config', 'G-CZ4CB0P6HR');
         </Script>
+        `}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
