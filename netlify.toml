@@ -1,0 +1,14 @@
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/sitemap-0.xml"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
