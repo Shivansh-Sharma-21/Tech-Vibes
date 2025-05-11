@@ -1,7 +1,7 @@
 ---
 title: "Data Fetching in Next.js: A Developer's Guide"
 date: "05-11-2025"
-category: "Web Development, DSA"
+category: "Web Development"
 tags: "nextjs, react, data fetching"
 excerpt: "Learn Fetching the new gold- data, in your next js project!!"
 author: "Shivansh Sharma"
