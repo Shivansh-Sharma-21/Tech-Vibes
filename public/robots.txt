@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tech-vibes.netlify.app/
+
+# Sitemaps
+Sitemap: https://tech-vibes.netlify.app/sitemap.xml
