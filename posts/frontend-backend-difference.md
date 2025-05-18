@@ -94,20 +94,6 @@ Basically, if front-end is the presentation, **back-end is the logic and the dat
 
 <br>
 
-## 🆚 Front-End vs Back-End: A Quick Comparison
-
-| Feature  | Front-End | Back-End |
-|----------|---------|----------|
-|User Interaction | Direct (buttons, forms, visuals) |Indirect(processing requests, sending data)| 
-|Languages|HTML, CSS, JavaScript| Python, Java, PHP, Ruby, Node.js |
-|Frameworks|React, Angular, Vue|Express, Django, Laravel, Spring|
-|Main Concern|UI/UX, accessibility, responsiveness|Logic, performance, security|
-|Tools Used|VS Code, Figma, Chrome DevTools|Postman, Docker, Terminal, DB clients|
-|Works With|Designers, Back-End Devs|Front-End Devs, DevOps, DB Admins|
-
-
-<br>
-
 ## 💼 Career Paths and Salaries
 ### 🧑‍🎨 Front-End Developer:
 * Job titles: UI Developer, Web Designer, Front-End Engineer
