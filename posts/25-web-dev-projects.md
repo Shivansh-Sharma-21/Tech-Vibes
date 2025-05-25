@@ -1,5 +1,5 @@
 ---
-title: "10+ Web Development Project Ideas (With Real-World Use Cases, **Tech Stack**s & Skill Levels)"
+title: "10+ Web Development Project Ideas (With Real-World Use Cases, Tech Stack's & Skill Levels)"
 date: "05-25-2025"
 category: "Web Development"
 tags: "html, javascript"
